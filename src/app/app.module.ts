@@ -22,6 +22,8 @@ import { ToastService } from '../services/toast/toast.service';
 import { EssenciaListPageModule } from '../pages/essencia-list/essencia-list.module';
 import { DetalhesEssenciaPageModule } from '../pages/detalhes-essencia/detalhes-essencia.module';
 import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essencia';
+import {ForumPage} from '../pages/forum/forum';
+import {ForumPageModule} from '../pages/forum/forum.module';
 
 @NgModule({
   declarations: [
@@ -45,6 +47,7 @@ import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essenc
     AddEssenciaPageModule,
     EssenciaListPageModule,
     DetalhesEssenciaPageModule,
+    ForumPageModule,
 
   ],
   bootstrap: [IonicApp],
@@ -55,7 +58,8 @@ import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essenc
     AddEssenciaPage,
     EssenciaListPage,
     DetalhesEssenciaPage,
-    ListPage
+    ListPage,
+    ForumPage
   ],
   providers: [
     StatusBar,

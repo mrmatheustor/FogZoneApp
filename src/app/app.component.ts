@@ -10,6 +10,7 @@ import { EditEssenciaPage } from '../pages/edit-essencia/edit-essencia';
 import { AddEssenciaPage } from '../pages/add-essencia/add-essencia';
 import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essencia';
 import { ToastService } from '../services/toast/toast.service';
+import {ForumPage} from '../pages/forum/forum';
 
 @Component({
   templateUrl: 'app.html'
@@ -26,7 +27,9 @@ export class MyApp {
 
     // used for an example of ngFor and navigation
     this.pages = [
-      { title: 'Início', component: InicioPage }
+      { title: 'Início', component: InicioPage },
+      {title: 'Forum', component: ForumPage }
+      
     ];
 
   }
