@@ -1,0 +1,36 @@
+<!--
+  Generated template for the DetalhesEssenciaPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>{{sobreEssencia?.Nome}}</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngIf="sobreEssencia">
+  <ion-item>
+    <ion-label>Marca: {{sobreEssencia.Marca}} </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Sabor: {{sobreEssencia.desc}} </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Preço: R${{sobreEssencia.preco}} </ion-label>
+  </ion-item>
+
+  <ion-item>
+    <ion-label>Amei</ion-label>
+    <ion-toggle [(ngModel)]="sobreEssencia.checked" (ionChange)="saveEssencia(sobreEssencia)"></ion-toggle>
+  </ion-item>
+
+
+  <button ion-button block clear (click)="removerEssencia(sobreEssencia)">Deletar Essência</button>
+</ion-content>

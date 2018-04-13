@@ -1,0 +1,39 @@
+<!--
+  Generated template for the InicioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Inicio</ion-title>
+    <ion-buttons end>
+      <button ion-button navPush="AddEssenciaPage">
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+  <ion-list>
+    <ion-list-header>
+      Essências
+    </ion-list-header>
+    <div *ngFor="let essencia of essenciaLista$ | async">
+      <ion-item *ngIf="essencia.checked === true" detail-push navPush="DetalhesEssenciaPage" [navParams]="{essencia: essencia}">
+        <ion-label>{{essencia.Marca}}: {{essencia.Nome}}</ion-label>
+        <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle>
+      </ion-item>
+
+
+    </div>
+  </ion-list>
+
+  <button ion-button bloack clear navPush="EssenciaListPage" [navParams]="{essencia: essencia}">Lista</button>
+
+</ion-content>

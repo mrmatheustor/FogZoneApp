@@ -1,0 +1,8 @@
+{
+  "name": "FogZone",
+  "app_id": "5c42493d",
+  "type": "ionic-angular",
+  "integrations": {
+    "cordova": {}
+  }
+}
