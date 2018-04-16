@@ -3,8 +3,10 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EssenciaListPage } from '../essencia-list/essencia-list';
 import { EssenciaListService } from '../../services/essencia-list/essencia-list.service';
 import { Observable } from 'rxjs/observable';
-import { Essencia } from '../../models/essencias/essencias.model';
+import { Essencia, Marcas } from '../../models/essencias/essencias.model';
 import { ToastService } from '../../services/toast/toast.service';
+
+import * as _ from 'lodash';
 
 /**
  * Generated class for the InicioPage page.
@@ -21,22 +23,42 @@ import { ToastService } from '../../services/toast/toast.service';
 export class InicioPage {
 
   essenciaLista$: Observable<Essencia[]>;
+  filtro: Essencia;
+  parametrosEssencia: Essencia;
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, private essencias: EssenciaListService, private toast : ToastService) {
-    
+
+  marca = [
+    {marcaTeste: 'Adalya' },
+    {marcaTeste: 'Fumari' },
+    {marcaTeste: 'Zomo' },
+  ];
+
+
+  constructor(public navCtrl: NavController, public navParams: NavParams, private essencias: EssenciaListService, private toast: ToastService) {
+
+
+
     this.essenciaLista$ = this.essencias
-    .getEssenciaList() //Retorna a lista do Banco de Dados
-    .snapshotChanges() //Chave e Valor
-    .map(mudancas => {
-      return mudancas.map(x => ({
-        key: x.payload.key, ...x.payload.val()
-      })
-    );
-    });
+      .getEssenciaList() //Retorna a lista do Banco de Dados
+      .snapshotChanges() //Chave e Valor
+      .map(mudancas => {
+        return mudancas.map(x => ({
+          key: x.payload.key, ...x.payload.val()
+        })
+        );
+      });
+
+
   }
+
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioPage');
+    this.parametrosEssencia = this.navParams.get('essencia');
+
+    // this.filtro = _.chain(this.essencias.getEssenciaList()).filter(x => x.Marca == this.parametrosEssencia.Marca).sortBy('Marca').value();
+    // this.filtro = _.chain(this.parametrosEssencia).grouBy('Marca').value();
+    // console.log('Mostrando: ', this.filtro.Marca);
   }
 
   saveEssencia(essencia: Essencia) {

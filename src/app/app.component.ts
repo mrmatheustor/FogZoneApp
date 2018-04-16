@@ -11,6 +11,7 @@ import { AddEssenciaPage } from '../pages/add-essencia/add-essencia';
 import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essencia';
 import { ToastService } from '../services/toast/toast.service';
 import {ForumPage} from '../pages/forum/forum';
+import { MarcasListaPage } from '../pages/marcas-lista/marcas-lista';
 
 @Component({
   templateUrl: 'app.html'

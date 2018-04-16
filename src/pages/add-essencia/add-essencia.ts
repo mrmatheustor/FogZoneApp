@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
-import { Essencia } from '../../models/essencias/essencias.model';
+import { Essencia, Marcas } from '../../models/essencias/essencias.model';
 import { EssenciaListService } from '../../services/essencia-list/essencia-list.service';
 import { InicioPage } from '../inicio/inicio';
 import { ToastService } from '../../services/toast/toast.service';
@@ -26,6 +26,8 @@ export class AddEssenciaPage {
     preco: undefined,
     checked: false
   };
+
+  
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private essencias: EssenciaListService, private toast: ToastService) {

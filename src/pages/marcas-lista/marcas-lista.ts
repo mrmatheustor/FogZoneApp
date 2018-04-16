@@ -3,10 +3,11 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { EssenciaListService } from '../../services/essencia-list/essencia-list.service';
 import { Essencia } from '../../models/essencias/essencias.model';
 import { ToastService } from '../../services/toast/toast.service';
-import { InicioPage } from '../inicio/inicio';
+import * as _ from 'lodash';
+import { Observable } from 'rxjs/observable';
 
 /**
- * Generated class for the DetalhesEssenciaPage page.
+ * Generated class for the MarcasListaPage page.
  *
  * See https://ionicframework.com/docs/components/#navigation for more info on
  * Ionic pages and navigation.
@@ -14,37 +15,43 @@ import { InicioPage } from '../inicio/inicio';
 
 @IonicPage()
 @Component({
-  selector: 'page-detalhes-essencia',
-  templateUrl: 'detalhes-essencia.html',
+  selector: 'page-marcas-lista',
+  templateUrl: 'marcas-lista.html',
 })
-export class DetalhesEssenciaPage {
+export class MarcasListaPage {
 
-  sobreEssencia: Essencia;
+  essenciaSabor: Essencia;
+  essenciaLista$: Observable<Essencia[]>;
+  pegarMarca: any;
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private essencias: EssenciaListService, private toast: ToastService) {
+
+
 
 
   }
 
   ionViewDidLoad() {
-    console.log('DetalhesEssenciaPage');
-    this.sobreEssencia = this.navParams.get('essencia');
-  }
+    console.log('ionViewDidLoad MarcasListaPage');
+    this.pegarMarca = this.navParams.get('string');
 
+    this.essenciaLista$ = this.essencias
+      .getEssenciaList() //Retorna a lista do Banco de Dados
+      .snapshotChanges() //Chave e Valor
+      .map(mudancas => {
+        return mudancas.map(x => ({
+          key: x.payload.key, ...x.payload.val()
+        })
+        );
+      });
+
+  }
 
   saveEssencia(essencia: Essencia) {
     this.essencias.editEssencia(essencia)
       .then(() => {
-        this.toast.show(`${essencia.Nome} Salvo!`);
+        this.toast.show(`${essencia.Nome} Alterado!`);
       });
   }
 
-  removerEssencia(essencia: Essencia) {
-    this.essencias.removeEssencia(essencia)
-      .then(() => {
-        this.sobreEssencia.checked = false;
-        this.toast.show(`${essencia.Nome} Deletado!`);
-        this.navCtrl.setRoot('InicioPage');
-      })
-  }
 }

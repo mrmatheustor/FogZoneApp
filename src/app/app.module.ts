@@ -24,6 +24,8 @@ import { DetalhesEssenciaPageModule } from '../pages/detalhes-essencia/detalhes-
 import { DetalhesEssenciaPage } from '../pages/detalhes-essencia/detalhes-essencia';
 import {ForumPage} from '../pages/forum/forum';
 import {ForumPageModule} from '../pages/forum/forum.module';
+import { MarcasListaPage } from '../pages/marcas-lista/marcas-lista';
+import { MarcasListaPageModule } from '../pages/marcas-lista/marcas-lista.module';
 
 @NgModule({
   declarations: [
@@ -48,6 +50,7 @@ import {ForumPageModule} from '../pages/forum/forum.module';
     EssenciaListPageModule,
     DetalhesEssenciaPageModule,
     ForumPageModule,
+    MarcasListaPageModule,
 
   ],
   bootstrap: [IonicApp],
@@ -58,6 +61,7 @@ import {ForumPageModule} from '../pages/forum/forum.module';
     AddEssenciaPage,
     EssenciaListPage,
     DetalhesEssenciaPage,
+    MarcasListaPage,
     ListPage,
     ForumPage
   ],

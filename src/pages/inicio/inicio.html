@@ -25,13 +25,20 @@
       Essências
     </ion-list-header>
     <div *ngFor="let essencia of essenciaLista$ | async">
-      <ion-item *ngIf="essencia.checked === true" detail-push navPush="DetalhesEssenciaPage" [navParams]="{essencia: essencia}">
-        <ion-label>{{essencia.Marca}}: {{essencia.Nome}}</ion-label>
-        <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle>
+      <ion-item *ngIf="essencia.checked ===true" detail-push navPush="DetalhesEssenciaPage" [navParams]="{essencia: essencia}">
+        <ion-label>{{essencia.Marca}}</ion-label>
+        <!-- <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle> -->
       </ion-item>
-
-
     </div>
+  </ion-list>
+
+  <ion-label>Tudo daqui é teste:</ion-label>
+
+  <ion-list>
+    <ion-item *ngFor="let marcas of marca" detail-push navPush="MarcasListaPage" [navParams]="{string:string}">
+      <ion-label>{{marcas.marcaTeste}}</ion-label>
+      <!-- <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle> -->
+    </ion-item>
   </ion-list>
 
   <button ion-button bloack clear navPush="EssenciaListPage" [navParams]="{essencia: essencia}">Lista</button>

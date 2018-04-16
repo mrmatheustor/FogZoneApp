@@ -25,4 +25,5 @@ export class EssenciaListService {
     removeEssencia(essencia: Essencia) {
         return this.essenciaListRef.remove(essencia.key);
     }
+
 }

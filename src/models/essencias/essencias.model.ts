@@ -6,3 +6,8 @@ export interface Essencia {
     checked: boolean;
     preco: number;
 }
+
+export interface Marcas {
+    key?: string;
+    Marcae: string[];
+}
