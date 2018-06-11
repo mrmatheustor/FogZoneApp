@@ -18,9 +18,9 @@
     <ion-list-header>
       Essências
     </ion-list-header>
-    <div *ngFor="let essencias of essenciaLista$ | async">
-      <ion-item *ngIf = "pegarMarca.Marcae === essencias.Marca">
-        <ion-label>{{essencias.Nome}}</ion-label>
+    <div *ngFor="let essencia of essenciaLista$ | async" >
+      <ion-item *ngIf = "pegarMarca.Marcae === essencia.Marca" detail-push navPush="DetalhesEssenciaPage" [navParams]="{essencia : essencia}">
+        <ion-label>{{essencia.Nome}}</ion-label>
       </ion-item>
     </div>
 

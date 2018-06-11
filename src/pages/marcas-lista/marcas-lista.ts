@@ -33,7 +33,7 @@ export class MarcasListaPage {
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad MarcasListaPage ' + this.navParams.get('marca'));
-    this.pegarMarca = this.navParams.get('marca'); //Não ta pegando a marca
+    this.pegarMarca = this.navParams.get('marca'); //Pega a marca como parametro passado de outra página
 
     this.essenciaLista$ = this.essencias
       .getEssenciaList() //Retorna a lista do Banco de Dados
