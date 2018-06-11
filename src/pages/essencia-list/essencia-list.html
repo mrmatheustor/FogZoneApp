@@ -27,4 +27,11 @@
       <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle>
     </ion-item>
   </ion-list>
+
+  <ion-fab right bottom #fab2>
+    <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+    <ion-fab-list side="left">
+      <button ion-fab navPush="AddEssenciaPage"><ion-icon name="add"></ion-icon></button>
+    </ion-fab-list>
+  </ion-fab>
 </ion-content>

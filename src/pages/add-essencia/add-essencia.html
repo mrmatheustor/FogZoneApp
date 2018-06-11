@@ -17,8 +17,17 @@
 
   <ion-item>
     <ion-label>Marca</ion-label>
-    <ion-input [(ngModel)]="essencia.Marca" placeholder="Adalya"></ion-input>
+    <ion-select [(ngModel)]="essencia.Marca" okText="Bora" cancelText="Nem">
+      <ion-option *ngFor="let marca of marcaLista$ | async">{{marca.Marcae}}</ion-option>
+    </ion-select>
   </ion-item>
+
+  <!-- <ion-item>
+    <ion-label>Marca</ion-label>
+    <ion-input [(ngModel)]="essencia.Marca" [(ngModel)]="marcaTeste.Marcae" placeholder="Adalya"></ion-input>
+  </ion-item> -->
+
+  
 
   <ion-item>
     <ion-label>Nome</ion-label>
@@ -41,6 +50,14 @@
   </ion-item>
 
 
-  <button ion-button block clear (click)="addEssencia(essencia)">Add</button>
+  <button ion-button block clear (click)="addEssencia(essencia)">Adicionar a Essências</button>
+
+  <!-- Nova MARCA para o bando de dados -->
+  <ion-item>
+      <ion-label>Nova MARCA</ion-label>
+      <ion-input [(ngModel)]="marcaTeste.Marcae" placeholder="Adalya"></ion-input>
+    </ion-item>
+  
+    <button ion-button block clear color="danger" (click)="addMarca(marcaTeste)">Adicionar Marca</button>
 
 </ion-content>

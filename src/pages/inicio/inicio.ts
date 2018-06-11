@@ -7,6 +7,7 @@ import { Essencia, Marcas } from '../../models/essencias/essencias.model';
 import { ToastService } from '../../services/toast/toast.service';
 
 import * as _ from 'lodash';
+import { MarcasListaPage } from '../marcas-lista/marcas-lista';
 
 /**
  * Generated class for the InicioPage page.
@@ -23,15 +24,10 @@ import * as _ from 'lodash';
 export class InicioPage {
 
   essenciaLista$: Observable<Essencia[]>;
+  marcaLista$: Observable<Marcas[]>;
   filtro: Essencia;
   parametrosEssencia: Essencia;
-
-
-  marca = [
-    {marcaTeste: 'Adalya' },
-    {marcaTeste: 'Fumari' },
-    {marcaTeste: 'Zomo' },
-  ];
+  parametros: any;
 
 
   constructor(public navCtrl: NavController, public navParams: NavParams, private essencias: EssenciaListService, private toast: ToastService) {
@@ -48,13 +44,23 @@ export class InicioPage {
         );
       });
 
+      this.marcaLista$ = this.essencias
+      .getMarcaList()
+      .snapshotChanges()
+      .map(mudancas => {
+        return mudancas.map(x => ({
+          key: x.payload.key, ...x.payload.val()
+        })
+        );
+      });
+
 
   }
 
 
   ionViewDidLoad() {
     console.log('ionViewDidLoad InicioPage');
-    this.parametrosEssencia = this.navParams.get('essencia');
+    // this.parametrosEssencia = this.navParams.get('essencia');
 
     // this.filtro = _.chain(this.essencias.getEssenciaList()).filter(x => x.Marca == this.parametrosEssencia.Marca).sortBy('Marca').value();
     // this.filtro = _.chain(this.parametrosEssencia).grouBy('Marca').value();
@@ -67,5 +73,9 @@ export class InicioPage {
         this.toast.show(`${essencia.Nome} Alterado!`);
       });
   }
+
+  // itemTapped(par) {
+  //   this.navCtrl.push(MarcasListaPage, par);
+  // }
 
 }

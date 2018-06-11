@@ -9,5 +9,5 @@ export interface Essencia {
 
 export interface Marcas {
     key?: string;
-    Marcae: string[];
+    Marcae: string;
 }

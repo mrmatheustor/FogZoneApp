@@ -27,7 +27,7 @@ export class DetalhesEssenciaPage {
   }
 
   ionViewDidLoad() {
-    console.log('DetalhesEssenciaPage');
+    console.log('DetalhesEssenciaPage ' + this.navParams.get('essencia'));
     this.sobreEssencia = this.navParams.get('essencia');
   }
 
@@ -42,7 +42,7 @@ export class DetalhesEssenciaPage {
   removerEssencia(essencia: Essencia) {
     this.essencias.removeEssencia(essencia)
       .then(() => {
-        this.sobreEssencia.checked = false;
+        // this.sobreEssencia.checked = false;
         this.toast.show(`${essencia.Nome} Deletado!`);
         this.navCtrl.setRoot('InicioPage');
       })

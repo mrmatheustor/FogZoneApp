@@ -19,28 +19,45 @@
 
 
 <ion-content padding>
+  <!-- Marcas -->
+  <ion-list>
+      <ion-list-header>
+          Por Marcas
+        </ion-list-header>
+    <ion-item *ngFor="let marca of marcaLista$ | async" detail-push navPush="MarcasListaPage" [navParams]="{marca : marca}">
+      <ion-label>{{marca.Marcae}}</ion-label>
+      <!-- <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle> -->
+    </ion-item>
+
+    <button block ion-button bloack clear navPush="EssenciaListPage" [navParams]="{essencia: essencia}">Lista</button>
+  </ion-list>
+
+  <!-- Lista Com Todas Essencias Do Banco De Dados -->
+  
+
+  <!-- Essencias Favoritas -->
 
   <ion-list>
     <ion-list-header>
-      Essências
+      Essências Marcadas Como Favorito
     </ion-list-header>
+    <ion-scroll scrollY="true" style="height:100vh;">
     <div *ngFor="let essencia of essenciaLista$ | async">
       <ion-item *ngIf="essencia.checked ===true" detail-push navPush="DetalhesEssenciaPage" [navParams]="{essencia: essencia}">
-        <ion-label>{{essencia.Marca}}</ion-label>
+        <ion-label>{{essencia.Nome}}</ion-label>
         <!-- <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle> -->
       </ion-item>
     </div>
+    </ion-scroll>
   </ion-list>
 
-  <ion-label>Tudo daqui é teste:</ion-label>
+  <ion-fab right bottom #fab2>
+      <button ion-fab color="light"><ion-icon name="arrow-dropleft"></ion-icon></button>
+      <ion-fab-list side="left">
+        <button ion-fab navPush="AddEssenciaPage"><ion-icon name="add"></ion-icon></button>
+      </ion-fab-list>
+    </ion-fab>
 
-  <ion-list>
-    <ion-item *ngFor="let marcas of marca" detail-push navPush="MarcasListaPage" [navParams]="{string:string}">
-      <ion-label>{{marcas.marcaTeste}}</ion-label>
-      <!-- <ion-toggle [(ngModel)]="essencia.checked" (ionChange)="saveEssencia(essencia)"></ion-toggle> -->
-    </ion-item>
-  </ion-list>
-
-  <button ion-button bloack clear navPush="EssenciaListPage" [navParams]="{essencia: essencia}">Lista</button>
+  
 
 </ion-content>
